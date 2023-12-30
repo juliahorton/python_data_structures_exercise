@@ -29,3 +29,13 @@ def is_odd_string(word):
     """
 
     # Hint: you may find the ord() function useful here
+            
+    sum = 0
+
+    def find_position(char): 
+        return ord(char) - 96
+    
+    for char in word:
+        sum += find_position(char)
+
+    return sum % 2 != 0

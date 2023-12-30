@@ -21,3 +21,23 @@ def sum_pairs(nums, goal):
         >>> sum_pairs([11, 20, 4, 2, 1, 5], 100)
         ()
     """
+
+    sum_to_goal = []
+
+    for x in range(len(nums)):
+        for y in nums[x:]:
+            if nums[x] + y == goal:
+                sum_to_goal.append([nums[x],y])
+
+    if len(sum_to_goal) == 0:
+        return ()
+    
+    min_idx = nums.index(sum_to_goal[0][-1])
+
+    for idx in range(len(sum_to_goal)):
+        if nums.index(sum_to_goal[idx][-1]) < min_idx:
+            min_idx = nums.index(sum_to_goal[idx][-1])
+
+    for pair in sum_to_goal:
+        if nums.index(pair[-1]) == min_idx:
+            return tuple(pair)

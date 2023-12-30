@@ -1,7 +1,7 @@
 def reverse_vowels(s):
     """Reverse vowels in a string.
 
-    Characters which re not vowels do not change position in string, but all
+    Characters which are not vowels do not change position in string, but all
     vowels (y is not a vowel), should reverse their order.
 
     >>> reverse_vowels("Hello!")
@@ -19,3 +19,15 @@ def reverse_vowels(s):
     reverse_vowels("why try, shy fly?")
     'why try, shy fly?''
     """
+
+    lst = list(s)
+    new_lst = []
+    for idx in range(len(lst)):
+        if lst[idx] in "aeiouAEIOU":
+            new_lst.append(lst[idx])
+            lst[idx] = ""
+    new_lst = new_lst[::-1]
+    for idx in range(len(lst)):
+        if lst[idx] == "":
+            lst[idx] = new_lst.pop(0)
+    return "".join(lst)
